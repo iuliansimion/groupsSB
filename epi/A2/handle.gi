@@ -14,7 +14,7 @@ Read("~/Workspace/groupsSB/epi/group.gi");
 #sList(rels,r->Value(r,[vars[22]],[vars[2]+vars[12]]);
 
 #
-# c_1, c_2 not 0 => c_3=c_1/2
+# c_1, c_2 not 0 , so they can be choosen c_1=c_2=1 => c_3=c_1/2
 #
 handleReg:=function()
 	# a test that the coeffs are right
@@ -98,5 +98,4 @@ handle2:=function()
 	od;
 	return [u,nn,rels];
 end;
-
 

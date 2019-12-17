@@ -1,6 +1,6 @@
 
 #
-# Read("~/Workspace/epimorphic/mainA2.gi");
+# Read("~/Workspace/epi/group.gi");
 #
 #
 # needs:
@@ -11,14 +11,14 @@
 
 
 ZZ:=Integers;
-avarnames:=List([1..10],i->Concatenation("a_{",String(i),"}"));
-bvarnames:=List([1..10],i->Concatenation("b_{",String(i),"}"));
-cvarnames:=List([1..10],i->Concatenation("c_{",String(i),"}"));
-xvarnames:=List([1..10],i->Concatenation("x_{",String(i),"}"));
+avarnames:=List([1..100],i->Concatenation("a_{",String(i),"}"));
+bvarnames:=List([1..100],i->Concatenation("b_{",String(i),"}"));
+cvarnames:=List([1..100],i->Concatenation("c_{",String(i),"}"));
+xvarnames:=List([1..100],i->Concatenation("x_{",String(i),"}"));
 varnames:=Concatenation(avarnames,bvarnames,cvarnames,xvarnames);
 APR:=PolynomialRing(ZZ,varnames);
 vars:=IndeterminatesOfPolynomialRing(APR);
-xvars:=vars{[31..40]};
+xvars:=vars{[301..400]};
 
 sla:=SimpleLieAlgebraTypeA_G(type,rank,APR);
 
