@@ -13,35 +13,6 @@ highest_weight:=[1,1];# corresponding highest weight module is the Lie algebra
 
 Read("~/Workspace/groupsSB/epi/ext.gi");
 
-
-ext_e:=function(k,e)
-	local W,extb,result,v;
-    W:=extA[k];
-    extb:=extA_basis[k];
-
-	result:=[];
-	for v in extb do
-		Append(result,[Coefficients(extb,e^v)]);
-	od;
-	result:=TransposedMat(result);
-	return result;
-end;
-
-
-ext_root_group:=function(k,index,t)
-	local ee,tmp,result,i;
-	ee:=ext_e(k,cb0[index]);
-	tmp:=ee;
-	result:=tmp^0;
-	i:=1;
-	while Length(Set(Concatenation(tmp)))<>1 do
-		result:=result+t^i*tmp/Factorial(i);
-		i:=i+1;
-		tmp:=tmp*ee;
-	od;
-	return result;
-end;
-
 handleReg:=function()
     local k,ua,ub,uab,u,e,h,h1,h2;
     k:=3; # power of exterior algebra
