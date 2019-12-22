@@ -1,6 +1,6 @@
 
 #
-# Read("~/Workspace/groupsSB/epi/G2/case.1.gi");
+# Read("~/Workspace/groupsSB/epi/G2/case.6.gi");
 #
 
 type:="G";
@@ -14,18 +14,18 @@ highest_weight:=[0,1];# corresponding highest weight module is the Lie algebra
 Read("~/Workspace/groupsSB/epi/ext.gi");
 
 #
-# p>5
+# p=3
 #
 
 getRep:=function(k,t)
     local u,ua,ub,uab,uaab,uaaab,uaaabb;
     ua:=ext_root_group(k,1,t);
-    ub:=ext_root_group(k,2,t);
-    uab:=ext_root_group(k,3,t^2/2); 
-    uaab:=ext_root_group(k,4,t^3/3); 
-    uaaab:=ext_root_group(k,5,t^4/4); 
-    uaaabb:=ext_root_group(k,6,-t^5/10);
-    u:=ua*ub*uab*uaab*uaaab*uaaabb;
+    #ub:=ext_root_group(k,2,t);
+    uab:=ext_root_group(k,3,t); 
+    uaab:=ext_root_group(k,4,t^2); 
+    #uaaab:=ext_root_group(k,5,t^3); 
+    #uaaabb:=ext_root_group(k,6,-2*t^3);
+    u:=ua*uab*uaab;#*uaaab*uaaabb;
 
     return u;   
 end;
@@ -43,7 +43,7 @@ handle:=function(k)
     # torus
     h1:=ext_e(k,cb0[7]);
     h2:=ext_e(k,cb0[8]);;
-    h:=3*h1+5*h2;   
+    h:=2*h1+3*h2;   
     esh:=Eigenspaces(Rationals,h);
     evh:=Eigenvalues(Rationals,h);
 
