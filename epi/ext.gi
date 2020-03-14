@@ -1,6 +1,6 @@
 
 #
-# Read("~/Workspace/epi/ext.gi");
+# Read("~/Workspace/groupsSB/epi/ext.gi");
 #
 # highest_weight:=[1,1];# A2: corresponding highest weight module is the Lie algebra
 #
@@ -24,6 +24,16 @@ ext_e:=function(k,e)
 	return result;
 end;
 
+ade0:=function(e)
+	local result,v;
+	result:=[];
+	for v in cb0 do
+		Append(result,[Coefficients(cb0,e*v)]);
+	od;
+	result:=TransposedMat(result);
+	return result;
+end;
+
 
 ext_root_group:=function(k,index,t)
 	local ee,tmp,result,i;
@@ -37,4 +47,23 @@ ext_root_group:=function(k,index,t)
 		tmp:=tmp*ee;
 	od;
 	return result;
+end;
+
+ext_root_nil_degree:=function(k,index)
+	local ee,tmp,i;
+	ee:=ext_e(k,cb0[index]);
+	tmp:=ee;
+	i:=1;
+	while Length(Set(Concatenation(tmp)))<>1 do
+		i:=i+1;
+		tmp:=tmp*ee;
+	od;
+	return i;
+end;
+
+ext_lin_comb:=function(k,coeffs)
+	local extAb,result;
+	extAb:=extA_basis[k];
+	result:=List([1..Length(extAb)],i->coeffs[i]*extAb[i]);
+	return Sum(result);
 end;

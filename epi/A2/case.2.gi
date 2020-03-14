@@ -1,6 +1,6 @@
 
 #
-# Read("~/Workspace/groupsSB/epi/A2/case.1.gi");
+# Read("~/Workspace/groupsSB/epi/A2/case.2.gi");
 #
 
 type:="A";
@@ -46,7 +46,7 @@ handle:=function(k)
     index_ev01:=Position(evh1,0);
     esh01:=esh1[index_ev01];
 
-    # centralizer of T1
+    # centralizer of T2
     h2:=ext_e(k,cb0[8]);
     esh2:=Eigenspaces(Rationals,h2);
     evh2:=Eigenvalues(Rationals,h2);
@@ -64,4 +64,32 @@ handle:=function(k)
     inter:=si[2];
     return inter;
     #return [inter,esh01,esh02];
+end;
+
+testFixedPointsTrous:=function(k)
+    local result1,result2,h1,esh1,evh1,esh01,index_ev01,h2,esh2,evh2,esh02,index_ev02;
+    # torus
+    # centralizer of T1
+    h1:=ext_e(k,cb0[7]);
+    esh1:=Eigenspaces(Rationals,h1);
+    evh1:=Eigenvalues(Rationals,h1);
+    esh01:=[];
+    index_ev01:=Position(evh1,0);
+    esh01:=esh1[index_ev01];
+    
+    result1:=List(Basis(esh01),b->ext_lin_comb(k,b));
+    result1:=List(result1,i->cb0[7]^i);
+
+    # centralizer of T2
+    h2:=ext_e(k,cb0[8]);
+    esh2:=Eigenspaces(Rationals,h2);
+    evh2:=Eigenvalues(Rationals,h2);
+    esh02:=[];
+    index_ev02:=Position(evh2,0);
+    esh02:=esh2[index_ev02];
+
+    result2:=List(Basis(esh02),b->ext_lin_comb(k,b));
+    result2:=List(result2,i->cb0[8]^i);
+
+    return [result1,result2];
 end;

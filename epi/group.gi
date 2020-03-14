@@ -1,6 +1,6 @@
 
 #
-# Read("~/Workspace/epi/group.gi");
+# Read("~/Workspace/groupsSB/epi/group.gi");
 #
 #
 # needs:
